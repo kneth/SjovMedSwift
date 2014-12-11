@@ -19,8 +19,7 @@ class ViewController: UIViewController {
         for (var i = 1; i <= n; i++) {
             sum += i
         }
-
-
+        println("Sum = " + String(sum))
     }
 
     override func didReceiveMemoryWarning() {
