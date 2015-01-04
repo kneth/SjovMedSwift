@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController {
 
@@ -28,9 +29,21 @@ class ViewController: UIViewController {
     }
 
     @IBAction func trykKnap() {
-        let beskedController = UIAlertController(title: "Alt om DATA", message: "Velkommen", preferredStyle: UIAlertControllerStyle.Alert)
-        beskedController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(beskedController, animated: true, completion: nil)
+        var message = ""
+        Alamofire.request(.GET, "http://www.altomdata.dk")
+            .responseString { (_, _, response, _) in
+                var message = ""
+                if (response != nil) {
+                    var tmp = response as String!
+                    let antal = countElements(tmp)
+                    message = "Hentede \(antal) tegn"
+                } else {
+                    message = "Fejl"
+                }
+                let beskedController = UIAlertController(title: "Alt om DATA", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                beskedController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(beskedController, animated: true, completion: nil)
+        }
     }
 }
 
