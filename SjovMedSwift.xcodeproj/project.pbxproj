@@ -407,6 +407,7 @@
 				42819AA81A37950500935D56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		42819AA91A37950500935D56 /* Build configuration list for PBXNativeTarget "SjovMedSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +416,7 @@
 				42819AAB1A37950500935D56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

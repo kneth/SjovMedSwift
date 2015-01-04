@@ -27,6 +27,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func trykKnap() {
+        let beskedController = UIAlertController(title: "Alt om DATA", message: "Velkommen", preferredStyle: UIAlertControllerStyle.Alert)
+        beskedController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(beskedController, animated: true, completion: nil)
+    }
 }
 
