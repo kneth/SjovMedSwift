@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4203141A1A59A4D600CEA58D /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 420314141A59A33600CEA58D /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4203141C1A59E75C00CEA58D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4203141B1A59E75C00CEA58D /* Realm.framework */; };
+		4203141E1A59E78400CEA58D /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4203141D1A59E78400CEA58D /* libc++.dylib */; };
+		420314201A59E7B400CEA58D /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4203141F1A59E7B400CEA58D /* RLMSupport.swift */; };
+		420314231A59E84400CEA58D /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420314221A59E84400CEA58D /* Website.swift */; };
 		42819A8D1A37950500935D56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42819A8C1A37950500935D56 /* AppDelegate.swift */; };
 		42819A8F1A37950500935D56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42819A8E1A37950500935D56 /* ViewController.swift */; };
 		42819A921A37950500935D56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42819A901A37950500935D56 /* Main.storyboard */; };
@@ -63,6 +67,10 @@
 
 /* Begin PBXFileReference section */
 		4203140E1A59A33600CEA58D /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		4203141B1A59E75C00CEA58D /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		4203141D1A59E78400CEA58D /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		4203141F1A59E7B400CEA58D /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
+		420314221A59E84400CEA58D /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
 		42819A871A37950500935D56 /* SjovMedSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SjovMedSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42819A8B1A37950500935D56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42819A8C1A37950500935D56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +88,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4203141E1A59E78400CEA58D /* libc++.dylib in Frameworks */,
+				4203141C1A59E75C00CEA58D /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +115,9 @@
 		42819A7E1A37950500935D56 = {
 			isa = PBXGroup;
 			children = (
+				4203141F1A59E7B400CEA58D /* RLMSupport.swift */,
+				4203141D1A59E78400CEA58D /* libc++.dylib */,
+				4203141B1A59E75C00CEA58D /* Realm.framework */,
 				4203140E1A59A33600CEA58D /* Alamofire.xcodeproj */,
 				42819A891A37950500935D56 /* SjovMedSwift */,
 				42819A9F1A37950500935D56 /* SjovMedSwiftTests */,
@@ -130,6 +143,7 @@
 				42819A931A37950500935D56 /* Images.xcassets */,
 				42819A951A37950500935D56 /* LaunchScreen.xib */,
 				42819A8A1A37950500935D56 /* Supporting Files */,
+				420314221A59E84400CEA58D /* Website.swift */,
 			);
 			path = SjovMedSwift;
 			sourceTree = "<group>";
@@ -285,7 +299,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				42819A8F1A37950500935D56 /* ViewController.swift in Sources */,
+				420314201A59E7B400CEA58D /* RLMSupport.swift in Sources */,
 				42819A8D1A37950500935D56 /* AppDelegate.swift in Sources */,
+				420314231A59E84400CEA58D /* Website.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +431,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SjovMedSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -425,6 +445,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SjovMedSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

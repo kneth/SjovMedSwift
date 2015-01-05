@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Realm
 
 class ViewController: UIViewController {
 
@@ -15,12 +16,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        var n = 100
-        var sum = 0
-        for (var i = 1; i <= n; i++) {
-            sum += i
+        Alamofire.request(.GET, "http://www.altomdata.dk")
+            .responseString { (_, _, response, _) in
+                var antal = 0
+                if (response != nil) {
+                    var tmp = response as String!
+                    antal = countElements(tmp)
+                } else {
+                    antal = 0
+                }
+                var website = Website()
+                website.website = "www.altomdata.dk"
+                website.size = antal
+
+                let realm = RLMRealm.defaultRealm()
+                realm.beginWriteTransaction()
+                realm.addObject(website)
+                realm.commitWriteTransaction()
         }
-        println("Sum = " + String(sum))
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,21 +42,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func trykKnap() {
-        var message = ""
-        Alamofire.request(.GET, "http://www.altomdata.dk")
-            .responseString { (_, _, response, _) in
-                var message = ""
-                if (response != nil) {
-                    var tmp = response as String!
-                    let antal = countElements(tmp)
-                    message = "Hentede \(antal) tegn"
-                } else {
-                    message = "Fejl"
-                }
-                let beskedController = UIAlertController(title: "Alt om DATA", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-                beskedController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(beskedController, animated: true, completion: nil)
-        }
+        let websites = Website.allObjects()
+        let antal = websites.sumOfProperty("size")
+        let message = "Hentede \(antal) tegn fra \(websites.count) sites"
+        let beskedController = UIAlertController(title: "Alt om DATA", message: message,preferredStyle: UIAlertControllerStyle.Alert)
+        beskedController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(beskedController, animated: true, completion: nil)
     }
 }
 
